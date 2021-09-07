@@ -1,5 +1,9 @@
 # Disaster Response Pipeline Project
 
+### Summary
+Project is a web app where workers of an emergency crew can enter new messages and get a classification as result. The web app also shows graphs to gather some metrics. This project us bas on a machine learning pipeline where it first starts in the ETL stage and goes into the Machine Learning.
+
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
