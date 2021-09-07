@@ -4,6 +4,16 @@ from sqlalchemy import create_engine
 import numpy as np
 
 def load_data(messages_filepath, categories_filepath):
+    """
+    Loads two .csv datasets and merges them together as one
+    
+    Parameters:
+    messages_filepath: csv file of the dataset messages
+    categories_filepath: csv file of the dataset category
+    
+    returns:
+    df: contains the merged dataset into a pandas datafram
+    """
     dataImport = pd.read_csv(messages_filepath)
     catImport = pd.read_csv(categories_filepath)
     df = pd.merge(dataImport, catImport, on='id', how='left')
@@ -11,6 +21,17 @@ def load_data(messages_filepath, categories_filepath):
     return df
 
 def clean_data(df):
+    
+    """
+    With the dataframe we will than clean up the dataset to be used for our           training and testing.
+    
+    Parameters:
+    df: The merged dataframe
+    
+    returns:
+    df: contains the merged dataset into a pandas datafram that has been cleaned
+    """
+    
     category = df["categories"].str.split(";", expand=True)
     row = category.iloc[[0]]
     catCol = row.applymap(lambda z: z[:-2]).iloc[0,:].tolist()
@@ -22,7 +43,6 @@ def clean_data(df):
         category[col] = category[col].astype(int)
         
     df = df.drop("categories", axis=1)
-    #df = df.drop(['original','genre'], axis=1)
     df = pd.concat([df, category], axis=1)
     
     df = df.drop_duplicates()
@@ -33,10 +53,20 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
-      engine = create_engine('sqlite:///' + database_filename)
-      df.to_sql('disasterapp', engine, index=False, if_exists = 'replace')
-      print(df.dtypes)
-      print(type(df))
+    """
+    The dataframe will be saved to be used for our training.
+    
+    Parameters:
+    df: The merged dataframe
+    database_filename: The name of what our database will be called
+    
+    returns:
+    None
+    """
+    engine = create_engine('sqlite:///' + database_filename)
+    df.to_sql('disasterapp', engine, index=False, if_exists = 'replace')
+    print(df.dtypes)
+    print(type(df))
 
 
 def main():
