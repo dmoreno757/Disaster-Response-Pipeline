@@ -9,6 +9,10 @@ Project is a web app where workers of an emergency crew can enter new messages a
 2. ML Pipeline
 3. Flask Web App
 
+### Installation
+To install git clone the repo:
+https://github.com/dmoreno757/Disaster-Response-Pipeline
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
@@ -21,3 +25,6 @@ Project is a web app where workers of an emergency crew can enter new messages a
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+### Acknowledgment
+Udacity workspace, statercode, and datasets
