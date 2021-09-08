@@ -1,5 +1,7 @@
 # Disaster Response Pipeline Project
 
+![](DRP1.png)
+
 ### Summary
 Project is a web app where workers of an emergency crew can enter new messages and get a classification as result. The web app also shows graphs to gather some metrics. This project us bas on a machine learning pipeline where it first starts in the ETL stage and goes into the Machine Learning.
 
@@ -25,6 +27,8 @@ https://github.com/dmoreno757/Disaster-Response-Pipeline
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+![](drp2.png)
 
 ### Acknowledgment
 Udacity workspace, statercode, and datasets
