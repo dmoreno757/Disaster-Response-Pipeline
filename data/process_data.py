@@ -39,13 +39,20 @@ def clean_data(df):
     category.columns = catCol
     
     for col in category:
-        category[col] = category[col].str[-1]
+        category[col] = category[col].astype(str).str[-1]
         category[col] = category[col].astype(int)
+        
+    category['related'] = category['related'].replace(to_replace = 2, value = 1)
         
     df = df.drop("categories", axis=1)
     df = pd.concat([df, category], axis=1)
     
     df = df.drop_duplicates()
+    
+    print(df['related'].value_counts())
+    print(df.related.unique())
+    
+    
     
     return df
     
