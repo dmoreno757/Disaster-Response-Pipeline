@@ -36,8 +36,7 @@ def load_data(database_filepath):
     Y: Gathering the labels
     categoryNames: Columns of the data
     """
-    engineDB = create_engine('sqlite:///../data/DisasterResponse.db')
-    #engineDB = create_engine('sqlite:///DisasterResponse.db')
+    engineDB = create_engine('sqlite:///' + database_filepath)
     dfApp = pd.read_sql('disasterapp', engineDB)
     X = dfApp['message']
     Y = dfApp.iloc[:,4:]
